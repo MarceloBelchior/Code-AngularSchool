@@ -10,7 +10,7 @@
           "style": "scss"
         },
         "@schematics/angular:application": {
-          "strict": false
+          "strict": true
         }
       },
       "root": "",
@@ -40,8 +40,8 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "5000kb",
-                  "maximumError": "10mb"
+                  "maximumWarning": "5mb",
+                  "maximumError": "8mb"
                 },
                 {
                   "type": "anyComponentStyle",
