@@ -1,0 +1,109 @@
+
+
+
+
+
+    <div class="row">
+      <div class="col-md-12">
+    <div class="card">
+      <div class="card-header card-header-success">
+          <h4 class="card-title ">Listagem das Escola por proximidade</h4>
+          <p class="card-category"> No resultado abaixo é exibido uma lista de escola baseado na sua localizaçao por cep.</p>
+      </div>
+    <div id="mapa-mapbox" >
+
+    </div>
+  </div>
+
+
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-9">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title ">Listagem das Escola por proximidade</h4>
+                        <p class="card-category"> No resultado abaixo é exibido uma lista de escola baseado na sua localizaçao por cep.</p>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class=" text-primary">
+                                    <th>
+                                        Nome Escola
+                                    </th>
+                                    <th>
+                                        Tipo de Atendimento
+                                    </th>
+                                    <th>
+                                        Situação
+                                    </th>
+                                    <th>
+                                        Logradouro
+                                    </th>
+                                    <th>
+                                        Rota
+                                    </th>
+                                </thead>
+                                <tbody *ngFor="let ec of escolas | slice:page :size;">
+                                    <tr>
+                                        <td>
+                                            {{  ec.nome }}
+                                        </td>
+                                        <td>
+                                          {{ ec.tipo }}
+                                        </td>
+                                        <td>
+                                            {{ ec.situacao_funcionamento }}
+                                        </td>
+                                        <td>
+                                            {{ ec.logradouro }}
+                                        </td>
+                                        <td class="text-primary" style="cursor: pointer;" (click)="habilitaEndereco()">
+                                          <span *ngIf="!pontodepartida"> Rota Apartir de sua localização</span>
+                                          <span *ngIf="pontodepartida"> Visualizar Rota</span>
+
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                                <button (click)="onVoltar()" *ngIf="page > 0">Voltar</button>
+
+                    Total de Registros  {{ total }}
+
+                                <button (click)="onProximo()" *ngIf="size < total ">proximo</button>
+
+
+            </div>
+            <div class="col-md-3" *ngIf="pontodepartida">
+              <div class="card">
+                <div class="card-header card-header-warning">
+                    <h4 class="card-title ">Informe cep valido </h4>
+                    <p class="card-category"> Neste ponto para traçar uma rota preciso de um ponto de partida!</p>
+
+                </div>
+              <div class="card-body">
+                <input name="longradouroorigem" [(ngModel)]="longradouroorigem"  type="text" >
+              </div>
+
+
+              <div class="card-body">
+           <button class="bt-success" (click)="pesquisarOrigem()">Pesquisar Origem</button>
+              </div>
+            </div>
+        </div></div></div>
+        </div>
+    </div>
+
+
+
+
+
