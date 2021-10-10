@@ -1,0 +1,8 @@
+{
+  "appService.zipIgnorePattern": [
+    "node_modules{,/**}",
+    ".vscode{,/**}"
+  ],
+  "appService.defaultWebAppToDeploy": "/subscriptions/cff2d835-a73b-4930-907f-8fc12d0c826a/resourceGroups/Default-Web-EastUS/providers/Microsoft.Web/sites/OpenSquare-CodeHB-UI",
+  "appService.deploySubpath": "dist/CodeHB"
+}
