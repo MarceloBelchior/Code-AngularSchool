@@ -10,10 +10,10 @@ export class EscolasService {
     private http: HttpClient) { }
 
  getEscolas() {
-   return this.http.get<any>('/api/Escolas/ListaEscolas');
+   return this.http.get<any>('https://opensquare-codehb-api.azurewebsites.net/api/Escolas/ListaEscolas');
  }
  getOrigem(logradouro : string) {
-   return this.http.get<any>('/api/Escolas/logradouro/' +  logradouro );
+   return this.http.get<any>('https://opensquare-codehb-api.azurewebsites.net/api/Escolas/logradouro/' +  logradouro );
  }
 }
 
