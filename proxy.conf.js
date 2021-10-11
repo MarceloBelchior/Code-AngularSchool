@@ -1,6 +1,6 @@
 const PROXY_CONFIG = {
   "/api/": {
-      "target": "https://opensquare-codehb-api.azurewebsites.net/",
+      "target": "https://localhost:5001/",
       "secure": false,
       "bypass": function (req, res, proxyOptions) {
           if (req.headers.accept.indexOf("html") !== -1) {

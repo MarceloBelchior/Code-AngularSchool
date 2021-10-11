@@ -40,14 +40,23 @@ dataorigem: any = null;
   {
 
   }
-  criarMarcador(lng: number,lat: number)
+  criarMarcador(scl: any)
   {
 
     const marker = new mapboxgl.Marker({
       draggable: false
     })
-    .setLngLat([lng,lat]).addTo(this.mapa);
-
+    .setLngLat([scl.longitude,scl.latitude])
+    .setPopup(new mapboxgl.Popup().setHTML(`
+    <div class="leaflet-popup-content" >
+    <strong>nome:</strong><div>`+ scl.nome + `</div>
+    <strong>telefone:</strong><div>`+ scl.telefone + `</div>
+    <strong>email:</strong><div>`+ scl.email + `</div>
+    <strong>site:</strong><div>`+ scl.url_website + `</div>
+    <strong>endereco:</strong><div>`+ scl.logradouro + `</div>
+    </div>`))
+    .addTo(this.mapa);
+   
 
   }
    getEscola() {
@@ -56,7 +65,7 @@ dataorigem: any = null;
     .subscribe(escolas => { this.escolas = escolas;
      this.escolas?.forEach(c=> {
        this.total += 1;
-       this.criarMarcador(c.longitude,c.latitude);
+       this.criarMarcador(c);
       });
 
 
