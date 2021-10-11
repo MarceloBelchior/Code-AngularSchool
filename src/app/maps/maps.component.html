@@ -59,9 +59,9 @@
                                         <td>
                                             {{ ec.logradouro }}
                                         </td>
-                                        <td class="text-primary" style="cursor: pointer;" (click)="habilitaEndereco()">
+                                        <td class="text-primary" style="cursor: pointer;" (click)="habilitaEndereco(ec.latitude,ec.longitude)">
                                           <span *ngIf="!pontodepartida"> Rota Apartir de sua localização</span>
-                                          <span *ngIf="pontodepartida"> Visualizar Rota</span>
+                                          <span *ngIf="pontodepartida" (click)="pesquisaRota()" > Visualizar Rota</span>
 
                                         </td>
                                     </tr>
@@ -103,6 +103,12 @@
         </div>
     </div>
 
+    <div >
+        <ul *ngFor="let leg of dataroute?.resourceSets[0]?.resources[0]?.routeLegs[0]?.itineraryItems" >
+
+            <li> {{ leg.name[0] }} </li>
+        </ul>
+    </div>
 
 
 

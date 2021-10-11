@@ -15,5 +15,8 @@ export class EscolasService {
  getOrigem(logradouro : string) {
    return this.http.get<any>('/api/Escolas/logradouro/' +  logradouro );
  }
+ GetRota(slat : number,slog: number, elat: number, elog : number) {
+  return this.http.get<any>('/api/Escolas/Directions?sLatitude='+ slat + '&sLongitude='+ slog+'&eLatitude=' + elat + '&eLongitude=' + elog);
+}
 }
 

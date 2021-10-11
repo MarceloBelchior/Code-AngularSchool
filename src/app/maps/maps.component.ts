@@ -16,9 +16,11 @@ export class MapsComponent implements OnInit {
    escolas: Array<any> | undefined;
    latitudeOrigem: number = 0;
    longitideOrigem: number = 0;
+   latitudeDest: number = 0;
+   longitideDest: number = 0;
   pontodepartida: boolean = false;
   longradouroorigem: string = '';
-dataorigem: any = null;
+ dataroute : any | undefined;
 
   constructor(private escolaService: EscolasService) { }
 
@@ -72,8 +74,10 @@ dataorigem: any = null;
     });
   }
 
-    habilitaEndereco()
+    habilitaEndereco(lat: number, logt: number)
     {
+      this.latitudeDest = lat;
+      this.longitideDest = logt;
       this.pontodepartida = true;
     }
 
@@ -96,7 +100,22 @@ dataorigem: any = null;
     pesquisarOrigem()
     {
       this.escolaService.getOrigem(this.longradouroorigem)
-      .subscribe(origem  => this.dataorigem = this.dataorigem );
+      .subscribe(origem  => { 
+        this.latitudeOrigem = origem.coordinates[0];
+        this.longitideOrigem = origem.coordinates[1];
+       
+      
+      });
+
+    }
+
+    pesquisaRota()
+    {
+
+      this.escolaService.GetRota(this.latitudeOrigem,
+        this.longitideOrigem,
+        this.latitudeDest,
+         this.longitideDest).subscribe(rotas => { this.dataroute = rotas; debugger; }  );
 
     }
 
