@@ -20,10 +20,10 @@ RUN npm run build
 
 # Use official nginx image as the base image
 FROM nginx:alpine
-
+ 
 # Copy the build output to replace the default nginx contents.
 COPY --from=build /usr/local/app/dist/CodeHB /usr/share/nginx/html
-
+COPY /config/nginx.conf /etc/nginx/conf.d/default.conf
 # Expose port 80
 EXPOSE 80
 EXPOSE 443
