@@ -26,7 +26,7 @@ export class MapsComponent implements OnInit {
 
   ngOnInit() {
    this.mapa = new mapboxgl.Map({
-     accessToken : 'pk.eyJ1IjoibWFyY2Vsb2JlbGNoaW9yIiwiYSI6ImNrdWtpamkxZDA5OG8ydm80ZzdhY2dtYjcifQ._onFYs7OWm21YMLXb4Q3BA',
+     accessToken : 'key',
      container : 'mapa-mapbox',
      style: 'mapbox://styles/mapbox/streets-v11',
      center: [-51.2473525,-30.1087029],
